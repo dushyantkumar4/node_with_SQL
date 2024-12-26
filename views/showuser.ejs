@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button><a href="http://localhost:8080/">Home</a></button>
+    <form method="GET" action="/user/new"><button>Create New User</button></form>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+        <%for(user of users){%>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td><form method="GET" action="/user/<%=user.id%>/edit">
+                    <button>Edit</button>
+                </form>
+            </td>
+            <td>
+                <form method="GET" action="/user/<%=user.id%>/delete">
+                    <button>Delete</button>
+                </form>
+            </td>
+        </tr>
+    <%}%>
+    </table>
+</body>
+</html>
